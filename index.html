@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Politek IBC — Kursus Sejak 1985</title>
+  <meta name="description" content="Politek IBC: kursus Bahasa Inggris, Komputer Perkantoran, dan Coding. Didirikan 1985." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#d9302a; /* utama */
+      --blue:#0b61ff; /* sekunder */
+      --bg-gradient: linear-gradient(135deg, rgba(217,48,42,0.95) 0%, rgba(11,97,255,0.95) 100%);
+      --card-bg: rgba(255,255,255,0.95);
+      --glass: rgba(255,255,255,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#0b2540}
+    body{background:var(--bg-gradient);display:flex;flex-direction:column}
+
+    /* NAV */
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:transparent}
+    .brand{display:flex;gap:12px;align-items:center;color:white;text-decoration:none}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--red),var(--blue));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;box-shadow:0 6px 18px rgba(0,0,0,0.18)}
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;font-size:12px;opacity:0.95}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{color:white;text-decoration:none;font-weight:600}
+    .cta{background:white;color:var(--blue);padding:10px 14px;border-radius:10px;font-weight:700}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center;padding:56px 28px}
+    .hero-card{background:var(--card-bg);padding:28px;border-radius:18px;box-shadow:0 10px 30px rgba(2,6,23,0.18)}
+    .tag{display:inline-block;background:linear-gradient(90deg,var(--red),var(--blue));color:white;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+    .hero h2{margin:14px 0 6px;font-size:32px}
+    .hero p.lead{margin:0 0 16px;font-size:15px;line-height:1.5;color:#17304a}
+    .features{display:flex;gap:12px;margin-top:10px}
+    .feature{flex:1;padding:12px;border-radius:12px;background:var(--glass);backdrop-filter:blur(6px);color:white;border:1px solid rgba(255,255,255,0.06)}
+    .hero-visual{padding:20px}
+    .visual-card{background:rgba(255,255,255,0.08);padding:18px;border-radius:12px;color:white}
+
+    /* COURSES */
+    .courses{padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .course{background:var(--card-bg);padding:18px;border-radius:14px;box-shadow:0 8px 24px rgba(2,6,23,0.12)}
+    .course h3{margin:0 0 6px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+
+    /* ABOUT */
+    .about{padding:28px;color:white;display:flex;gap:20px;align-items:center}
+    .about .text{max-width:720px}
+    .year{font-size:42px;font-weight:800}
+
+    /* CTA BANNER */
+    .cta-banner{margin:28px;border-radius:14px;padding:20px;background:linear-gradient(90deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04));display:flex;justify-content:space-between;align-items:center}
+
+    /* CONTACT */
+    .contact{padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.04),transparent);display:flex;gap:20px;flex-wrap:wrap}
+    form{flex:1;min-width:280px;background:var(--card-bg);padding:18px;border-radius:12px}
+    input,textarea{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--red),var(--blue));color:white;font-weight:700;border:none;cursor:pointer}
+
+    /* FOOTER */
+    footer{padding:18px 28px;color:rgba(255,255,255,0.9);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="#">
+      <img class="logo" src="logo.png" alt="Logo Politek IBC" style="width:52px;height:52px;border-radius:10px;object-fit:contain;background:white;padding:4px;">
+      <div>
+        <h1>Politek IBC</h1>
+        <p>Sejak 1985 — Kursus & Pelatihan</p>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Tentang</a>
+      <a href="#courses">Kursus</a>
+      <a href="https://wa.me/6281234567890">Kontak</a>
+    </div>
+    <a class="cta" href="https://wa.me/6282130580748">Daftar Sekarang</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-card">
+      <span class="tag">Terpercaya • 1985</span>
+      <h2>Belajar praktis & cepat di Politek IBC</h2>
+      <p class="lead">Kursus Komputer, Bahasa Inggris, dan Bahasa Korea yang dirancang untuk kebutuhan Pelajar, Mahasiswa, dan Umum yang ingin upgrade skill secara cepat dan bersertifikat.</p>
+      <div class="features">
+        <div class="feature">Instruktur berpengalaman</div>
+        <div class="feature">Kelas pagi & malam</div>
+        <div class="feature">Harga terjangkau</div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+        <a class="btn" href="#courses">Lihat Kursus</a>
+        <a style="background:transparent;color:white;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);text-decoration:none;font-weight:700" href="#about">Sejarah Kami</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="visual-card">
+        <h3 style="margin-top:0">Kenapa Harus Pilih Politek IBC ?</h3>
+        <ul style="margin:10px 0 0;padding-left:18px">
+          <li>Kurulum materi praktis & project based</li>
+          <li>Fasilitas lab komputer & modul digital</li>
+          <li>Support setelah kursus (komunitas alumni)</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section id="courses" class="courses">
+    <article class="course">
+      <div class="pill" style="background:linear-gradient(90deg,var(--red),#ff6b6b);color:white">KOMPUTER</div>
+      <h3>Komputer Perkantoran</h3>
+      <p>Pengoperasian Komputer dari dasar, Microsoft Office (Word, Excel, PowerPoint).</p>
+      <p><strong>Durasi:</strong> 1-3 bulan</p>
+    </article>
+
+    <article class="course">
+      <div class="pill" style="background:linear-gradient(90deg,#48a9ff,var(--blue));color:white">BAHASA INGGRIS</div>
+      <h3>Basic English</h3>
+      <p>Fokus pada Grammar, speaking, listening, dan Penambahan Vocabulary. Cocok untuk kerja dan kuliah.</p>
+      <p><strong>Durasi:</strong> 1-3 bulan</p>
+    </article>
+
+    <article class="course">
+      <div class="pill" style="background:linear-gradient(90deg,var(--red),var(--blue));color:white">BAHASA KOREA</div>
+      <h3>Kursus Bahasa Korea Dasar</h3>
+      <p>Pelajari huruf Hangul, kosakata sehari-hari, salam, tata bahasa dasar, dan percakapan ringan.</p>
+      <p><strong>Durasi:</strong> 1-3 bulan</p>
+    </article>
+  </section>
+
+  <section id="about" class="about">
+    <div class="text">
+      <div class="year">1985</div>
+      <h3 style="margin-top:6px;color:white">Didirikan oleh Drs. Roy jahidin, S.Kom., M.Sc. — Komitmen untuk pendidikan</h3>
+      <p>Politek IBC didirikan pada tahun 1985 sebagai pusat kursus kecil yang kemudian berkembang menjadi institusi yang melatih ribuan siswa. Kami menekankan metode pengajaran praktis, keterampilan kerja nyata, dan harga yang ramah bagi pelajar dan umum.</p>
+    </div>
+    <div style="min-width:260px">
+      <div style="background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.12)">
+        <h4 style="margin:0 0 6px;color: #000;">Mengapa harus belajar di Politek IBC ?</h4> 
+        <ul style="margin:0;padding-left:18px;color:#000">
+          <li>Ribuan Alumni pernah belajar disini</li>
+          <li>Instruktur berpengalaman</li>
+          <li>Sertifikat diakui & resmi</li>
+          <li>Kelas offline & online</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner" style="margin:0 28px">
+    <div>
+      <strong style="font-size:18px;color:white">Daftar Hari Ini — dan Upgrade Skillmu</strong>
+      <p style="margin:6px 0 0;color:rgba(255,255,255,0.85)">Dapatkan diskon hingga 50% dengan mengunjungi langsung Politek IBC -></p>
+    </div>
+    <div>
+      <a class="btn" href="https://maps.app.goo.gl/5yhDF3M3FoEyMqEq5">Lihat Lokasi</a>
+    </div>
+  </div>
+
+  <section id="contact" class="contact">
+    
+
+    <div style="min-width:280px;align-self:flex-start">
+      <div style="background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.12)">
+        <h4 style="margin-top:0">Kontak</h4>
+        <p style="margin:6px 0 0"><strong>Alamat:</strong> <a href="https://maps.app.goo.gl/5yhDF3M3FoEyMqEq5">Jl. Tentara Pelajar No.3 (Utara Terowongan Kereta Api) Jatibarang</a>
+        <p style="margin:6px 0 0"><strong>Telepon:</strong> <a href="https://wa.me/6282130580748">0821-3058-0748</a>
+        <p style="margin:6px 0 0"><strong>Email:</strong> politekibc29@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© Politek IBC — Sejak 1985</div>
+    <div>Ikuti kami: <span style="font-weight:700">Facebook • Instagram </span></div>
+  </footer>
+
+  <script>
+    // Simple interactivity: smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        if(id === '#') return;
+        const el = document.querySelector(id);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    })
+  </script>
+</body>
+</html>
