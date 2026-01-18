@@ -1,11 +1,8 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta name="description" content="Kursus Komputer, Bahasa Inggris & Korea - Politek IBC sejak 1985. Tempat belajar yang mudah, murah, dan berkualitas di Indonesia.">
-<meta name="keywords" content="Kursus Komputer, Kursus Bahasa Inggris, Kursus Bahasa Korea, Politek IBC, Komputer dasar, Microsoft Office, English Course">
-<meta name="author" content="Politek IBC">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Politek IBC — Kursus Sejak 1985</title>
   <meta name="description" content="Politek IBC: kursus Bahasa Inggris, Komputer Perkantoran, dan Coding. Didirikan 1985." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -29,7 +26,18 @@
     .brand p{margin:0;font-size:12px;opacity:0.95}
     .nav-links{display:flex;gap:18px}
     .nav-links a{color:white;text-decoration:none;font-weight:600}
-    .cta{background:white;color:var(--blue);padding:10px 14px;border-radius:10px;font-weight:700}
+    .cta{background:white;color:var(--blue);padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+
+    /* Mobile Menu Button - hanya muncul di mobile */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
 
     /* HERO */
     .hero{display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center;padding:56px 28px}
@@ -52,6 +60,7 @@
     .about{padding:28px;color:white;display:flex;gap:20px;align-items:center}
     .about .text{max-width:720px}
     .year{font-size:42px;font-weight:800}
+    .about h3{margin-top:6px;color:white}
 
     /* CTA BANNER */
     .cta-banner{margin:28px;border-radius:14px;padding:20px;background:linear-gradient(90deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04));display:flex;justify-content:space-between;align-items:center}
@@ -60,15 +69,159 @@
     .contact{padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.04),transparent);display:flex;gap:20px;flex-wrap:wrap}
     form{flex:1;min-width:280px;background:var(--card-bg);padding:18px;border-radius:12px}
     input,textarea{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--red),var(--blue));color:white;font-weight:700;border:none;cursor:pointer}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--red),var(--blue));color:white;font-weight:700;border:none;cursor:pointer;text-decoration:none}
 
     /* FOOTER */
     footer{padding:18px 28px;color:rgba(255,255,255,0.9);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .nav-links{display:none}
+    /* RESPONSIVE UNTUK MOBILE */
+    @media(max-width: 900px){
+      /* Hero section menjadi kolom di mobile */
+      .hero{
+        grid-template-columns:1fr;
+        padding: 40px 20px;
+        gap: 24px;
+      }
+      
+      .hero h2 {
+        font-size: 26px;
+      }
+      
+      .hero-card {
+        padding: 22px;
+      }
+      
+      /* Features menjadi kolom di mobile */
+      .features {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      /* Courses tetap grid tapi dengan penyesuaian */
+      .courses {
+        padding: 24px 20px;
+        gap: 16px;
+      }
+      
+      /* About section menjadi kolom di mobile */
+      .about {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 24px;
+      }
+      
+      .about .text {
+        max-width: 100%;
+      }
+      
+      .year {
+        font-size: 36px;
+      }
+      
+      /* CTA Banner menjadi kolom di mobile */
+      .cta-banner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        margin: 24px 20px;
+        padding: 20px;
+      }
+      
+      /* Contact menjadi kolom di mobile */
+      .contact {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 20px;
+      }
+      
+      /* Navbar untuk mobile */
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        flex-direction: column;
+        padding: 16px 20px;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 100;
+        gap: 0;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links a {
+        color: #0b2540;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        font-size: 15px;
+      }
+      
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+      
+      .nav {
+        padding: 16px 20px;
+      }
+      
+      .brand h1 {
+        font-size: 16px;
+      }
+      
+      .brand p {
+        font-size: 11px;
+      }
+      
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 20px;
+      }
+    }
+    
+    /* Responsive untuk tablet kecil */
+    @media(max-width: 768px){
+      .hero h2 {
+        font-size: 24px;
+      }
+      
+      .features {
+        gap: 8px;
+      }
+      
+      .feature {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+    
+    /* Untuk layar sangat kecil */
+    @media(max-width: 480px){
+      .hero h2 {
+        font-size: 22px;
+      }
+      
+      .hero p.lead {
+        font-size: 14px;
+      }
+      
+      .visual-card {
+        padding: 16px;
+      }
+      
+      .cta-banner strong {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -81,7 +234,10 @@
         <p>Sejak 1985 — Kursus & Pelatihan</p>
       </div>
     </a>
-    <div class="nav-links">
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    
+    <div class="nav-links" id="navLinks">
       <a href="#about">Tentang</a>
       <a href="#courses">Kursus</a>
       <a href="https://wa.me/6282130580748">Kontak</a>
@@ -144,7 +300,7 @@
   <section id="about" class="about">
     <div class="text">
       <div class="year">1985</div>
-      <h3 style="margin-top:6px;color:white">Didirikan oleh Drs. Roy jahidin, S.Kom., M.Sc. — Komitmen untuk pendidikan</h3>
+      <h3>Didirikan oleh Drs. Roy jahidin, S.Kom., M.Sc. — Komitmen untuk pendidikan</h3>
       <p>Politek IBC didirikan pada tahun 1985 sebagai pusat kursus kecil yang kemudian berkembang menjadi institusi yang melatih ribuan siswa. Kami menekankan metode pengajaran praktis, keterampilan kerja nyata, dan harga yang ramah bagi pelajar dan umum.</p>
     </div>
     <div style="min-width:260px">
@@ -171,8 +327,6 @@
   </div>
 
   <section id="contact" class="contact">
-    
-
     <div style="min-width:280px;align-self:flex-start">
       <div style="background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.12)">
         <h4 style="margin-top:0">Kontak</h4>
@@ -197,10 +351,28 @@
         if(id === '#') return;
         const el = document.querySelector(id);
         if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        
+        // Close mobile menu if open
+        document.getElementById('navLinks').classList.remove('active');
       })
-    })
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navLinks = document.getElementById('navLinks');
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      
+      if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target) && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+      }
+    });
   </script>
 </body>
 </html>
-
-
