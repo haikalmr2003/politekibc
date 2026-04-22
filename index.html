@@ -752,22 +752,15 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ... (kode css lainnya di atas) ... */
-
-/* ══ RESPONSIVE (MOBILE FIX) ══ */
+/* ══ RESPONSIVE ══ */
 @media (max-width: 768px) {
-  /* 1. Sembunyikan menu desktop */
   .nav-links { display: none; }
-  
-  /* 2. Kurangi padding section agar tidak terlalu banyak ruang kosong di HP */
-  section { padding: 60px 5%; }
-  
-  /* ... (dan sisa kode perbaikan mobile lainnya) ... */
-  
-  /* 6. Rapikan Footer agar posisinya ke tengah dan rapi */
-  footer { flex-direction: column; text-align: center; gap: 16px; padding: 30px 5%; }
-  .footer-left { flex-direction: column; justify-content: center; }
-  .footer-logo-text { font-size: 14px; text-align: center; line-height: 1.4; }
+  section { padding: 68px 5%; }
+  .hero-stats { display: none; }
+  .konsul-inner, .daftar-inner, .kontak-inner { grid-template-columns: 1fr; }
+  .testimoni-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .programs-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
