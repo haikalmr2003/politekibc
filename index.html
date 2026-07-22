@@ -1,1348 +1,758 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Politek IBC — International Brilliant College Indramayu</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --navy: #0B1D35;
-  --navy2: #142440;
-  --blue: #1A3A6E;
-  --red: #C0000A;
-  --red2: #E0000F;
-  --gold: #D4940A;
-  --gold2: #F0B429;
-  --white: #FFFFFF;
-  --off: #F7F4EE;
-  --gray: #8A96A8;
-  --light: #EEF2F8;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--off);
-  color: var(--navy);
-  overflow-x: hidden;
-}
-
-/* ══ NAVBAR ══ */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 0 5%;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(11,29,53,0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(192,0,10,0.25);
-}
-
-.nav-logo {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none;
-}
-
-.nav-logo img {
-  width: 42px; height: 42px;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-.nav-logo-text {
-  display: flex; flex-direction: column;
-}
-
-.nav-logo-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  color: var(--white);
-  letter-spacing: 2px;
-  line-height: 1;
-}
-
-.nav-logo-name span { color: #5BB8FF; }
-
-.nav-logo-sub {
-  font-size: 9px;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.65);
-  letter-spacing: 0.5px;
-  transition: color 0.2s;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0; right: 0;
-  height: 1px;
-  background: var(--red2);
-  transform: scaleX(0);
-  transition: transform 0.2s;
-}
-
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { transform: scaleX(1); }
-
-.nav-cta {
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  color: var(--white) !important;
-  font-weight: 700 !important;
-  padding: 8px 20px;
-  border-radius: 6px;
-  font-size: 12px !important;
-  letter-spacing: 1px !important;
-  box-shadow: 0 4px 14px rgba(192,0,10,0.35);
-}
-
-.nav-cta::after { display: none !important; }
-.nav-cta:hover { color: var(--white) !important; }
-
-/* ══ HERO ══ */
-#hero {
-  min-height: 100vh;
-  background: var(--navy);
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding: 0 6%;
-}
-
-.hero-bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 55% 65% at 75% 50%, rgba(26,58,110,0.55) 0%, transparent 70%),
-    radial-gradient(ellipse 35% 45% at 15% 75%, rgba(192,0,10,0.1) 0%, transparent 60%);
-}
-
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.hero-content {
-  position: relative; z-index: 2;
-  max-width: 620px;
-  animation: heroIn 0.9s ease both;
-}
-
-@keyframes heroIn {
-  from { opacity: 0; transform: translateY(36px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(192,0,10,0.12);
-  border: 1px solid rgba(192,0,10,0.3);
-  color: #FF6B7A;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 6px 16px; border-radius: 20px;
-  margin-bottom: 24px;
-}
-
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #FF6B7A;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1); }
-  50% { opacity:0.4; transform:scale(0.7); }
-}
-
-.hero-logo-big {
-  display: flex; align-items: center; gap: 20px;
-  margin-bottom: 24px;
-}
-
-.hero-logo-big img {
-  width: 90px; height: 90px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.5));
-  animation: heroIn 0.9s 0.1s ease both;
-}
-
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 7.5vw, 84px);
-  color: var(--white);
-  letter-spacing: 3px;
-  line-height: 0.95;
-}
-
-.hero-title .red { color: #FF4D57; }
-.hero-title .blue-l { color: #5BB8FF; }
-.hero-title .outline {
-  -webkit-text-stroke: 2px rgba(255,255,255,0.25);
-  color: transparent;
-}
-
-.hero-sub {
-  font-size: 15px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.75;
-  margin: 18px 0 32px;
-  max-width: 480px;
-}
-
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  color: var(--white);
-  font-weight: 700; font-size: 13px;
-  letter-spacing: 1px; padding: 14px 28px;
-  border-radius: 8px; text-decoration: none;
-  text-transform: uppercase;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 6px 24px rgba(192,0,10,0.4);
-}
-
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(192,0,10,0.55); }
-
-.btn-secondary {
-  background: rgba(255,255,255,0.07);
-  color: var(--white); font-weight: 500; font-size: 13px;
-  padding: 14px 28px; border-radius: 8px; text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: background 0.2s;
-}
-
-.btn-secondary:hover { background: rgba(255,255,255,0.13); }
-
-.hero-stats {
-  position: absolute; right: 6%; bottom: 10%;
-  display: flex; flex-direction: column; gap: 14px;
-  z-index: 2;
-  animation: heroIn 0.9s 0.3s ease both;
-}
-
-.stat-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 12px; padding: 16px 22px;
-  text-align: center; backdrop-filter: blur(10px);
-  min-width: 130px;
-}
-
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 34px; color: #5BB8FF;
-  letter-spacing: 2px; line-height: 1;
-}
-
-.stat-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-top: 4px; }
-
-.hero-scroll {
-  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: rgba(255,255,255,0.25); font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-  animation: floatScroll 2.5s infinite ease-in-out;
-}
-
-@keyframes floatScroll {
-  0%,100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(7px); }
-}
-
-.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent); }
-
-/* ══ SECTIONS ══ */
-section { padding: 92px 6%; }
-
-.section-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--red2); margin-bottom: 10px;
-}
-
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(32px, 5vw, 50px);
-  letter-spacing: 2px; line-height: 1.05; margin-bottom: 12px;
-}
-
-.section-sub { font-size: 15px; color: var(--gray); max-width: 500px; line-height: 1.7; }
-
-/* ══ KONSULTASI GRATIS ══ */
-#konsultasi {
-  background: linear-gradient(135deg, var(--navy) 0%, #0d2040 100%);
-  position: relative; overflow: hidden;
-}
-
-#konsultasi::before {
-  content: 'GRATIS';
-  position: absolute; right: -30px; top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 180px; color: rgba(255,255,255,0.02);
-  letter-spacing: 10px; white-space: nowrap;
-}
-
-.konsul-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center;
-}
-
-.konsul-text .section-title { color: var(--white); }
-.konsul-text .section-title span { color: #5BB8FF; }
-.konsul-text .section-sub { color: rgba(255,255,255,0.45); margin-bottom: 32px; }
-
-.konsul-steps {
-  display: flex; flex-direction: column; gap: 14px;
-}
-
-.konsul-step {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 16px 20px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.konsul-step:hover {
-  border-color: rgba(91,184,255,0.25);
-  background: rgba(91,184,255,0.05);
-}
-
-.konsul-step-num {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Bebas Neue', sans-serif; font-size: 18px;
-  color: var(--white); flex-shrink: 0;
-}
-
-.konsul-step-title { font-weight: 600; font-size: 14px; color: var(--white); margin-bottom: 3px; }
-.konsul-step-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
-
-.konsul-visual {
-  display: flex; align-items: center; justify-content: center;
-}
-
-.konsul-card-big {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(91,184,255,0.2);
-  border-radius: 20px; padding: 40px;
-  text-align: center; width: 100%;
-  position: relative; overflow: hidden;
-}
-
-.konsul-card-big::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(91,184,255,0.07) 0%, transparent 70%);
-}
-
-.konsul-icon-big { font-size: 56px; margin-bottom: 16px; }
-.konsul-free-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px; color: #5BB8FF;
-  letter-spacing: 4px; line-height: 1;
-}
-
-.konsul-free-sub {
-  font-size: 13px; color: rgba(255,255,255,0.45);
-  margin-top: 10px; line-height: 1.6;
-}
-
-.konsul-cta {
-  display: inline-block; margin-top: 24px;
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  color: var(--white); font-weight: 700; font-size: 12px;
-  letter-spacing: 1px; padding: 12px 28px; border-radius: 8px;
-  text-decoration: none; text-transform: uppercase;
-  box-shadow: 0 6px 20px rgba(192,0,10,0.35);
-  transition: transform 0.2s;
-  position: relative;
-}
-
-.konsul-cta:hover { transform: translateY(-2px); }
-
-/* ══ PROGRAM ══ */
-#program { background: var(--off); }
-
-.program-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 44px; flex-wrap: wrap; gap: 20px;
-}
-
-.tabs {
-  display: flex; gap: 6px;
-  background: var(--light); padding: 5px; border-radius: 10px;
-}
-
-.tab {
-  padding: 8px 18px; border-radius: 7px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
-  cursor: pointer; transition: all 0.2s;
-  color: var(--gray); border: none; background: transparent;
-  font-family: 'Outfit', sans-serif;
-}
-
-.tab.active { background: var(--navy); color: #5BB8FF; box-shadow: 0 4px 12px rgba(11,29,53,0.2); }
-
-.programs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 20px;
-}
-
-.program-card {
-  background: var(--white); border-radius: 16px; overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.06);
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: none;
-}
-
-.program-card.show { display: block; }
-.program-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(0,0,0,0.11); }
-
-.program-card.featured { border: 2px solid var(--red); position: relative; }
-
-.featured-tag {
-  position: absolute; top: 14px; right: 14px;
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  color: var(--white); font-size: 10px; font-weight: 700;
-  padding: 4px 12px; border-radius: 20px; letter-spacing: 1px;
-}
-
-.program-card-top {
-  height: 110px; display: flex; align-items: center; justify-content: center;
-  font-size: 46px; position: relative; overflow: hidden;
-}
-
-.top-navy { background: linear-gradient(135deg, #0B1D35, #1A3A6E); }
-.top-red { background: linear-gradient(135deg, #7F1414, #C0000A); }
-.top-teal { background: linear-gradient(135deg, #064E3B, #065F46); }
-.top-purple { background: linear-gradient(135deg, #2D1B69, #4C1D95); }
-.top-blue { background: linear-gradient(135deg, #0C4A6E, #075985); }
-.top-orange { background: linear-gradient(135deg, #7C2D12, #9A3412); }
-
-.program-card-body { padding: 20px; }
-
-.program-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 21px; letter-spacing: 1.5px; color: var(--navy); margin-bottom: 5px;
-}
-
-.program-sessions { font-size: 12px; color: var(--gray); margin-bottom: 14px; }
-
-.program-features { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
-
-.program-features li {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; color: #4A5568;
-}
-
-.feat-check {
-  width: 17px; height: 17px; border-radius: 50%;
-  background: rgba(192,0,10,0.08);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 9px; color: var(--red); flex-shrink: 0;
-}
-
-.program-price-row {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  padding-top: 14px; border-top: 1px solid var(--light);
-}
-
-.price-main {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px; color: var(--navy); letter-spacing: 1px; line-height: 1;
-}
-
-.price-sub { font-size: 11px; color: var(--gray); margin-top: 3px; }
-
-.price-btn {
-  background: var(--navy); color: #5BB8FF;
-  font-size: 11px; font-weight: 700; padding: 8px 14px;
-  border-radius: 6px; text-decoration: none; letter-spacing: 0.5px;
-  transition: background 0.2s;
-}
-
-.price-btn:hover { background: var(--blue); }
-
-/* ══ TESTIMONI ══ */
-#testimoni {
-  background: var(--navy); position: relative; overflow: hidden;
-}
-
-#testimoni::before {
-  content: '';
-  position: absolute; top: -80px; left: -80px;
-  width: 360px; height: 360px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(192,0,10,0.07) 0%, transparent 70%);
-}
-
-.testimoni-header { text-align: center; margin-bottom: 52px; }
-.testimoni-header .section-title { color: var(--white); }
-.testimoni-header .section-sub { color: rgba(255,255,255,0.4); margin: 0 auto; }
-
-.testimoni-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-
-.testi-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px; padding: 26px;
-  transition: border-color 0.3s, background 0.3s;
-}
-
-.testi-card:hover {
-  border-color: rgba(192,0,10,0.25);
-  background: rgba(192,0,10,0.04);
-}
-
-.testi-quote {
-  font-size: 38px; color: var(--red2); opacity: 0.4;
-  line-height: 1; margin-bottom: 8px;
-  font-family: 'Playfair Display', serif;
-}
-
-.testi-text {
-  font-size: 13px; color: rgba(255,255,255,0.6);
-  line-height: 1.75; margin-bottom: 16px; font-style: italic;
-}
-
-.testi-stars { color: var(--gold2); font-size: 12px; letter-spacing: 2px; margin-bottom: 14px; }
-
-.testi-person {
-  display: flex; align-items: center; gap: 12px;
-  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.07);
-}
-
-.testi-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px; flex-shrink: 0;
-}
-
-.testi-name { font-weight: 600; font-size: 13px; color: var(--white); }
-.testi-role { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; }
-
-/* ══ FORM PENDAFTARAN ══ */
-#daftar { background: var(--off); }
-
-.daftar-inner {
-  display: grid; grid-template-columns: 1fr 1.2fr;
-  gap: 60px; align-items: start;
-}
-
-.daftar-info { padding-top: 6px; }
-.daftar-info .section-sub { margin-bottom: 30px; }
-
-.info-items { display: flex; flex-direction: column; gap: 14px; }
-
-.info-item { display: flex; align-items: flex-start; gap: 14px; }
-
-.info-icon {
-  width: 42px; height: 42px; border-radius: 10px;
-  background: var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-}
-
-.info-item-title { font-weight: 600; font-size: 13px; color: var(--navy); margin-bottom: 2px; }
-.info-item-val { font-size: 13px; color: var(--gray); line-height: 1.5; }
-
-.form-card {
-  background: var(--white); border-radius: 20px; padding: 34px;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.form-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px; letter-spacing: 2px; color: var(--navy); margin-bottom: 4px;
-}
-
-.form-subtitle { font-size: 13px; color: var(--gray); margin-bottom: 24px; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-.form-group.full { grid-column: 1 / -1; }
-
-.form-group label {
-  font-size: 11px; font-weight: 600; color: var(--navy);
-  letter-spacing: 0.5px; text-transform: uppercase;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 11px 14px;
-  border: 1.5px solid var(--light); border-radius: 8px;
-  font-family: 'Outfit', sans-serif; font-size: 14px;
-  color: var(--navy); background: var(--off);
-  transition: border-color 0.2s, background 0.2s;
-  outline: none; appearance: none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--red); background: var(--white);
-}
-
-.form-group textarea { resize: vertical; min-height: 76px; }
-
-.form-submit {
-  width: 100%; padding: 15px;
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  color: var(--white);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px; letter-spacing: 2px;
-  border: none; border-radius: 10px; cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-top: 4px;
-  box-shadow: 0 6px 20px rgba(192,0,10,0.3);
-}
-
-.form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(192,0,10,0.45); }
-
-.form-note { text-align: center; font-size: 12px; color: var(--gray); margin-top: 12px; }
-
-.form-success { display: none; text-align: center; padding: 28px; }
-.success-icon { font-size: 52px; margin-bottom: 14px; }
-.success-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px; letter-spacing: 2px; color: var(--navy); margin-bottom: 8px;
-}
-.success-sub { font-size: 14px; color: var(--gray); line-height: 1.7; }
-
-/* ══ KONTAK & MAP ══ */
-#kontak { background: var(--navy); padding-bottom: 0; }
-
-.kontak-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 56px; align-items: start; margin-bottom: 52px;
-}
-
-.kontak-info .section-title { color: var(--white); }
-.kontak-info .section-title span { color: #5BB8FF; }
-.kontak-info .section-sub { color: rgba(255,255,255,0.4); margin-bottom: 32px; }
-
-.kontak-cards { display: flex; flex-direction: column; gap: 12px; }
-
-.kontak-card {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 18px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px; text-decoration: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.kontak-card:hover {
-  border-color: rgba(91,184,255,0.25);
-  background: rgba(91,184,255,0.05);
-}
-
-.kontak-card-icon {
-  width: 42px; height: 42px; border-radius: 10px;
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 19px; flex-shrink: 0;
-}
-
-.kontak-card-label {
-  font-size: 10px; font-weight: 600; letter-spacing: 1px;
-  color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 3px;
-}
-
-.kontak-card-val { font-size: 14px; font-weight: 600; color: var(--white); }
-
-.map-container { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.09); }
-
-.map-placeholder {
-  width: 100%; height: 300px;
-  background: linear-gradient(135deg, #0d2040, #1a3a6e);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 12px; position: relative; overflow: hidden;
-}
-
-.map-placeholder::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.map-pin { font-size: 46px; position: relative; z-index: 2; animation: bounce 1.8s infinite ease-in-out; }
-
-@keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.map-text {
-  font-size: 12px; color: rgba(255,255,255,0.5);
-  text-align: center; line-height: 1.6; z-index: 2; position: relative;
-}
-
-.map-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: linear-gradient(135deg, var(--red), var(--red2));
-  color: var(--white); font-size: 12px; font-weight: 700;
-  padding: 10px 20px; border-radius: 6px; text-decoration: none;
-  letter-spacing: 0.5px; z-index: 2; position: relative;
-  transition: transform 0.2s;
-}
-
-.map-link:hover { transform: translateY(-2px); }
-
-/* ══ FOOTER ══ */
-footer {
-  background: rgba(0,0,0,0.3);
-  padding: 22px 6%;
-  display: flex; align-items: center; justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.footer-left { display: flex; align-items: center; gap: 10px; }
-.footer-left img { width: 30px; height: 30px; object-fit: contain; opacity: 0.8; }
-.footer-logo-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px; color: rgba(255,255,255,0.4);
-  letter-spacing: 2px;
-}
-
-.footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
-
-/* ══ REVEAL ══ */
-.reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ══ RESPONSIVE ══ */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  section { padding: 68px 5%; }
-  .hero-stats { display: none; }
-  .konsul-inner, .daftar-inner, .kontak-inner { grid-template-columns: 1fr; }
-  .testimoni-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .programs-grid { grid-template-columns: 1fr; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Placement Test & Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body>
-</style>
-</head>
-<body>
+<body class="bg-slate-100 min-h-screen text-slate-800 flex flex-col items-center justify-start p-4 sm:p-6">
 
-<!-- NAVBAR -->
-<nav>
-  <a href="#hero" class="nav-logo">
-    <img src="politek.png" alt="Logo Politek IBC">
-    <div class="nav-logo-text">
-      <div class="nav-logo-name">POLITEK <span>IBC</span></div>
-      <div class="nav-logo-sub">International Brilliant College</div>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#konsultasi">Konsultasi Gratis</a></li>
-    <li><a href="#program">Program</a></li>
-    <li><a href="#testimoni">Testimoni</a></li>
-    <li><a href="#kontak">Kontak</a></li>
-    <li><a href="#daftar" class="nav-cta">DAFTAR SEKARANG</a></li>
-  </ul>
-</nav>
+    <!-- Top Navigation Header -->
+    <div class="max-w-5xl w-full bg-white rounded-2xl shadow-md border border-slate-200 mb-6 overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur border border-white/30 flex items-center justify-center font-bold text-lg">
+                    🇬🇧
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight">English Placement Test</h1>
+                    <p class="text-blue-100 text-xs mt-0.5">Sistem Tes Penempatan & Management Kursus</p>
+                </div>
+            </div>
 
-<!-- ═ HERO ═ -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Est. 1985 · Indramayu</div>
-    <div class="hero-logo-big">
-      <img src="politek.png" alt="Politek IBC">
-      <h1 class="hero-title">
-        POLITEK<br>
-        <span class="blue-l">I</span><span class="blue-l">B</span><span class="blue-l">C</span><br>
-        <span class="red">INDRAMAYU</span>
-      </h1>
-    </div>
-    <p class="hero-sub">
-      Kursus Komputer, Bahasa Inggris, dan pelatihan profesional terpercaya di Indramayu sejak 1985. Instruktur berpengalaman, sertifikat resmi, siap kerja.
-    </p>
-    <div class="hero-btns">
-      <a href="#daftar" class="btn-primary">Daftar Sekarang →</a>
-      <a href="#program" class="btn-secondary">Lihat Program</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat-card">
-      <div class="stat-num">1985</div>
-      <div class="stat-label">Berdiri Sejak</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">5+</div>
-      <div class="stat-label">Program Kursus</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">✓</div>
-      <div class="stat-label">Bersertifikat</div>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-</section>
-
-<!-- ═ KONSULTASI GRATIS ═ -->
-<section id="konsultasi">
-  <div class="konsul-inner">
-    <div class="konsul-text reveal">
-      <div class="section-label">Tidak Perlu Bingung</div>
-      <h2 class="section-title" style="color:white">KONSULTASI<br><span>GRATIS</span><br>UNTUK KAMU</h2>
-      <p class="section-sub">Belum yakin mau ambil kursus apa? Datang atau hubungi kami dulu — tanpa biaya, tanpa komitmen. Tim kami siap membantu kamu memilih program yang paling sesuai.</p>
-      <div class="konsul-steps">
-        <div class="konsul-step">
-          <div class="konsul-step-num">1</div>
-          <div>
-            <div class="konsul-step-title">Hubungi atau Datang Langsung</div>
-            <div class="konsul-step-desc">Via WhatsApp atau langsung ke kantor kami di Jatibarang — kapanpun jam buka.</div>
-          </div>
+            <!-- View Switcher Tabs -->
+            <div class="flex bg-blue-800/50 p-1 rounded-xl border border-white/10 text-xs font-semibold">
+                <button id="nav-test-btn" onclick="switchTab('test')" class="px-4 py-2 rounded-lg bg-white text-blue-700 shadow-sm transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i> Tes Placement
+                </button>
+                <button id="nav-admin-btn" onclick="switchTab('admin')" class="px-4 py-2 rounded-lg text-blue-100 hover:text-white transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-lock"></i> Dashboard Admin
+                </button>
+            </div>
         </div>
-        <div class="konsul-step">
-          <div class="konsul-step-num">2</div>
-          <div>
-            <div class="konsul-step-title">Ceritakan Kebutuhan Kamu</div>
-            <div class="konsul-step-desc">Mau kerja? Kuliah? Upgrade skill? Kami bantu tentukan program yang paling cocok.</div>
-          </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-5xl w-full">
+
+        <!-- ==================== VIEW 1: PLACEMENT TEST ==================== -->
+        <div id="test-view" class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            
+            <!-- Start Screen / Registration -->
+            <div id="start-screen" class="p-6 sm:p-10 space-y-8 max-w-2xl mx-auto">
+                <div class="text-center space-y-3">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-slate-800">Selamat Datang di Tes Penempatan</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Tes ini terdiri dari <span class="font-bold text-slate-800">30 pertanyaan pilihan ganda</span> untuk mengukur level bahasa Inggris Anda. Silakan isi data diri sebelum memulai.
+                    </p>
+                </div>
+
+                <form id="student-form" onsubmit="handleStartTest(event)" class="space-y-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nama Lengkap <span class="text-rose-500">*</span></label>
+                        <input type="text" id="student-name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor WhatsApp <span class="text-rose-500">*</span></label>
+                        <input type="tel" id="student-phone" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-sm">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Hasil tes dan informasi kelas akan dikirimkan juga ke nomor WA ini.</span>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-200 text-sm flex items-center justify-center gap-2 mt-2">
+                        <span>Mulai Tes Sekarang</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </form>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-500 text-center">
+                    <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">1. Beginner</div>
+                    <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">2. Elementary</div>
+                    <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">3. Intermediate</div>
+                    <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">4. Advanced</div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quiz-screen" class="hidden p-6 sm:p-10 space-y-6 max-w-3xl mx-auto">
+                <!-- Progress Bar & Counter -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-xs sm:text-sm font-semibold text-slate-500">
+                        <span id="progress-text">Soal 1 dari 30</span>
+                        <span id="category-badge" class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-bold text-xs">Beginner</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                        <div id="progress-bar" class="bg-blue-600 h-full rounded-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <h3 id="question-text" class="text-base sm:text-lg font-bold text-slate-800 leading-snug">
+                        <!-- Question injected here -->
+                    </h3>
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Options injected here -->
+                </div>
+            </div>
+
+            <!-- Result Screen -->
+            <div id="result-screen" class="hidden p-6 sm:p-10 space-y-6 text-center max-w-2xl mx-auto">
+                <div class="space-y-2">
+                    <div id="sync-status" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-2">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Hasil tersimpan di database
+                    </div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Hasil Penempatan Anda</p>
+                    <div id="final-level" class="text-4xl sm:text-5xl font-black text-blue-600 tracking-tight">INTERMEDIATE</div>
+                </div>
+
+                <div class="inline-block bg-slate-50 rounded-2xl p-6 border border-slate-200 w-full max-w-md shadow-sm">
+                    <div class="text-xs font-semibold uppercase text-slate-400 mb-1">Skor Akhir</div>
+                    <div id="score-text" class="text-4xl font-black text-slate-800">0 / 30</div>
+                    <div id="score-percentage" class="text-xs font-bold text-blue-600 mt-1">0% Benar</div>
+                </div>
+
+                <!-- Recommendation Box -->
+                <div class="bg-blue-50/80 border border-blue-200 p-5 rounded-2xl text-left space-y-1">
+                    <h4 class="font-bold text-blue-900 text-sm sm:text-base flex items-center gap-2">
+                        💡 Rekomendasi Kelas:
+                    </h4>
+                    <p id="recommendation-text" class="text-blue-800 text-sm leading-relaxed">
+                        <!-- Recommendation injected here -->
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="toggleReview()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-6 rounded-xl transition text-sm border border-slate-300">
+                        <i class="fa-solid fa-list-check mr-2"></i> Lihat Pembahasan
+                    </button>
+                    <button onclick="resetTest()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition shadow-md text-sm">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Tes Ulang
+                    </button>
+                </div>
+
+                <!-- Answer Review Section -->
+                <div id="review-section" class="hidden text-left border-t border-slate-200 pt-6 space-y-4">
+                    <h4 class="font-bold text-slate-800 text-sm">Detail Jawaban Anda:</h4>
+                    <div id="review-container" class="space-y-3 max-h-80 overflow-y-auto pr-2">
+                        <!-- Review items injected here -->
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="konsul-step">
-          <div class="konsul-step-num">3</div>
-          <div>
-            <div class="konsul-step-title">Mulai Kursus dengan Percaya Diri</div>
-            <div class="konsul-step-desc">Setelah cocok, langsung daftar dan mulai belajar. Semudah itu!</div>
-          </div>
+
+        <!-- ==================== VIEW 2: ADMIN DASHBOARD ==================== -->
+        <div id="admin-view" class="hidden space-y-6">
+            
+            <!-- Admin Top Header Info & Logout -->
+            <div class="bg-blue-900 text-white p-4 rounded-2xl flex justify-between items-center shadow-sm">
+                <div class="flex items-center gap-2 text-xs sm:text-sm font-semibold">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Admin Session Active</span>
+                </div>
+                <button onclick="logoutAdmin()" class="bg-rose-500/80 hover:bg-rose-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock"></i> Kunci / Keluar Admin
+                </button>
+            </div>
+
+            <!-- Stat Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase">Total Peserta</span>
+                    <div id="stat-total" class="text-2xl sm:text-3xl font-black text-slate-800">0</div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase">Rata-rata Skor</span>
+                    <div id="stat-avg" class="text-2xl sm:text-3xl font-black text-blue-600">0</div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase">Level Terbanyak</span>
+                    <div id="stat-top-level" class="text-lg sm:text-xl font-bold text-emerald-600 truncate">-</div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase">Status DB</span>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-bold text-slate-700">Online Realtime</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Table Section -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+                <div class="p-5 border-b border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-50">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg">Daftar Hasil Placement Test</h3>
+                        <p class="text-slate-500 text-xs">Data tersimpan secara realtime dari para pendaftar</p>
+                    </div>
+
+                    <!-- Filter and Actions -->
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <input type="text" id="search-input" oninput="filterAdminTable()" placeholder="Cari nama / WA..." class="px-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1 md:w-48 bg-white">
+                        
+                        <select id="level-filter" onchange="filterAdminTable()" class="px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white font-medium text-slate-700">
+                            <option value="ALL">Semua Level</option>
+                            <option value="BEGINNER">Beginner</option>
+                            <option value="ELEMENTARY">Elementary</option>
+                            <option value="INTERMEDIATE">Intermediate</option>
+                            <option value="ADVANCED">Advanced</option>
+                        </select>
+
+                        <button onclick="exportToCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-file-excel"></i> Export CSV
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Table Content -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-500 font-bold border-b border-slate-200 uppercase text-[11px] tracking-wider">
+                                <th class="py-3.5 px-4">Tanggal</th>
+                                <th class="py-3.5 px-4">Nama Siswa</th>
+                                <th class="py-3.5 px-4">WhatsApp</th>
+                                <th class="py-3.5 px-4">Skor</th>
+                                <th class="py-3.5 px-4">Level Penempatan</th>
+                                <th class="py-3.5 px-4 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                            <!-- Rows injected here -->
+                            <tr>
+                                <td colspan="6" class="text-center py-8 text-slate-400">Memuat data peserta...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
-      </div>
-    </div>
-    <div class="konsul-visual reveal">
-      <div class="konsul-card-big">
-        <div class="konsul-icon-big">💬</div>
-        <div class="konsul-free-text">GRATIS</div>
-        <div class="konsul-free-sub">Konsultasi program kursus<br>tanpa biaya & tanpa komitmen<br>Langsung dijawab oleh tim kami</div>
-        <a href="https://wa.me/628211409313" target="_blank" class="konsul-cta">Chat WhatsApp Sekarang →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═ PROGRAM & HARGA ═ -->
-<section id="program">
-  <div class="program-header reveal">
-    <div>
-      <div class="section-label">Pilih Program</div>
-      <h2 class="section-title">PROGRAM<br>KURSUS KAMI</h2>
     </div>
-    <div class="tabs">
-      <button class="tab active" onclick="filterTab(this,'semua')">Semua</button>
-      <button class="tab" onclick="filterTab(this,'komputer')">Komputer</button>
-      <button class="tab" onclick="filterTab(this,'english')">Bahasa Inggris</button>
-    </div>
-  </div>
 
-  <div class="programs-grid">
-
-    <!-- MS Word -->
-    <div class="program-card show" data-cat="komputer">
-      <div class="program-card-top top-navy">📝</div>
-      <div class="program-card-body">
-        <div class="program-name">MS. WORD</div>
-        <div class="program-sessions">📅 8 Pertemuan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Pengetikan & formatting dokumen</li>
-          <li><div class="feat-check">✓</div>Mail merge & template profesional</li>
-          <li><div class="feat-check">✓</div>Sertifikat kelulusan resmi</li>
-          <li><div class="feat-check">✓</div>Instruktur berpengalaman</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 800rb</div>
-            <div class="price-sub">~Rp 100rb/pertemuan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
+    <!-- Admin PIN Protection Modal -->
+    <div id="admin-pin-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-sm w-full p-6 text-center space-y-4">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-extrabold text-slate-800">Akses Khusus Admin</h3>
+                <p class="text-xs text-slate-500 mt-1">Masukkan PIN Keamanan untuk membuka data hasil tes siswa.</p>
+            </div>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+                <input type="password" id="admin-pin-input" maxlength="10" placeholder="Masukkan PIN" autocomplete="off" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-center text-lg tracking-widest font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50">
+                <p id="pin-error-msg" class="text-xs text-rose-500 font-semibold hidden"><i class="fa-solid fa-circle-exclamation"></i> PIN Salah! Silakan coba lagi.</p>
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeAdminPinModal()" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-600 hover:bg-slate-100 transition">Batal</button>
+                    <button type="submit" class="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white shadow-md transition">Buka Admin</button>
+                </div>
+            </form>
+            <div class="text-[11px] text-slate-400 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                cuma saya yang bisa masuk wlee <span class="font-bold text-slate-700">😜😜😜</span>
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- MS PowerPoint -->
-    <div class="program-card show" data-cat="komputer">
-      <div class="program-card-top top-teal">📊</div>
-      <div class="program-card-body">
-        <div class="program-name">MS. POWERPOINT</div>
-        <div class="program-sessions">📅 6 Pertemuan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Desain slide profesional</li>
-          <li><div class="feat-check">✓</div>Animasi & transisi menarik</li>
-          <li><div class="feat-check">✓</div>Sertifikat kelulusan resmi</li>
-          <li><div class="feat-check">✓</div>Instruktur berpengalaman</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 700rb</div>
-            <div class="price-sub">~Rp 117rb/pertemuan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+    <script>
+        // 30 Questions Dataset
+        const questions = [
+            // BEGINNER (1-8)
+            { q: "1. I ___ a student.", options: ["am", "is", "are", "be"], correct: 0, level: "Beginner" },
+            { q: "2. Where ___ you live?", options: ["does", "is", "do", "are"], correct: 2, level: "Beginner" },
+            { q: "3. This is my brother. ___ name is Paul.", options: ["He", "His", "Him", "He's"], correct: 1, level: "Beginner" },
+            { q: "4. There ___ five books on the table.", options: ["is", "am", "be", "are"], correct: 3, level: "Beginner" },
+            { q: "5. I usually ___ up at 7 o'clock every morning.", options: ["get", "gets", "getting", "got"], correct: 0, level: "Beginner" },
+            { q: "6. She ___ like coffee; she prefers tea.", options: ["doesn't", "don't", "isn't", "aren't"], correct: 0, level: "Beginner" },
+            { q: "7. Can you help ___ with my homework?", options: ["I", "my", "me", "mine"], correct: 2, level: "Beginner" },
+            { q: "8. What time ___ it right now?", options: ["is", "are", "do", "have"], correct: 0, level: "Beginner" },
 
-    <!-- MS Excel -->
-    <div class="program-card show" data-cat="komputer">
-      <div class="program-card-top top-red">📈</div>
-      <div class="program-card-body">
-        <div class="program-name">MS. EXCEL</div>
-        <div class="program-sessions">📅 9 Pertemuan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Rumus & fungsi dasar–lanjutan</li>
-          <li><div class="feat-check">✓</div>Pivot table & grafik data</li>
-          <li><div class="feat-check">✓</div>Sertifikat kelulusan resmi</li>
-          <li><div class="feat-check">✓</div>Instruktur berpengalaman</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 1jt</div>
-            <div class="price-sub">~Rp 111rb/pertemuan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+            // ELEMENTARY (9-16)
+            { q: "9. She ___ to the cinema yesterday.", options: ["goes", "gone", "went", "is going"], correct: 2, level: "Elementary" },
+            { q: "10. Have you ___ your breakfast yet?", options: ["eat", "eaten", "ate", "eating"], correct: 1, level: "Elementary" },
+            { q: "11. This car is ___ than mine.", options: ["fast", "fastest", "more fast", "faster"], correct: 3, level: "Elementary" },
+            { q: "12. I'm very interested ___ learning English.", options: ["on", "in", "at", "for"], correct: 1, level: "Elementary" },
+            { q: "13. You ___ smoke here. It's strictly forbidden.", options: ["don't have to", "mustn't", "couldn't", "might not"], correct: 1, level: "Elementary" },
+            { q: "14. What ___ you do if it rains tomorrow?", options: ["will", "did", "are", "have"], correct: 0, level: "Elementary" },
+            { q: "15. We have lived in this city ___ 2018.", options: ["for", "since", "during", "in"], correct: 1, level: "Elementary" },
+            { q: "16. The house was ___ by a famous architect in 1995.", options: ["build", "built", "building", "builds"], correct: 1, level: "Elementary" },
 
-    <!-- Komputer Office FEATURED -->
-    <div class="program-card featured show" data-cat="komputer">
-      <div class="featured-tag">⭐ TERLENGKAP</div>
-      <div class="program-card-top top-navy">🖥️</div>
-      <div class="program-card-body">
-        <div class="program-name">KOMPUTER OFFICE</div>
-        <div class="program-sessions">📅 30 Pertemuan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Word + PowerPoint + Excel</li>
-          <li><div class="feat-check">✓</div>Pengenalan komputer dari 0</li>
-          <li><div class="feat-check">✓</div>Sertifikat kelulusan resmi</li>
-          <li><div class="feat-check">✓</div>Siap kerja & melamar kerja</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 2,3jt</div>
-            <div class="price-sub">Paket paling hemat & lengkap</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+            // INTERMEDIATE (17-23)
+            { q: "17. If I ___ more money, I would buy a new house.", options: ["have", "will have", "had", "would have"], correct: 2, level: "Intermediate" },
+            { q: "18. The man ___ lives next door is a doctor.", options: ["who", "which", "whose", "whom"], correct: 0, level: "Intermediate" },
+            { q: "19. I've been working at this company ___ three years.", options: ["since", "for", "during", "while"], correct: 1, level: "Intermediate" },
+            { q: "20. I wish I ___ play the guitar as well as you do.", options: ["can", "could", "will", "would"], correct: 1, level: "Intermediate" },
+            { q: "21. He asked me where ___.", options: ["did I live", "I lived", "do I live", "I live"], correct: 1, level: "Intermediate" },
+            { q: "22. Neither my sister nor my parents ___ able to attend.", options: ["was", "were", "is", "be"], correct: 1, level: "Intermediate" },
+            { q: "23. She insisted on ___ for the dinner despite my objections.", options: ["paying", "to pay", "pay", "paid"], correct: 0, level: "Intermediate" },
 
-    <!-- Desain Dasar -->
-    <div class="program-card show" data-cat="komputer">
-      <div class="program-card-top top-purple">🎨</div>
-      <div class="program-card-body">
-        <div class="program-name">DESAIN DASAR</div>
-        <div class="program-sessions">📅 24 Pertemuan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Desain grafis dasar</li>
-          <li><div class="feat-check">✓</div>Tools desain populer</li>
-          <li><div class="feat-check">✓</div>Sertifikat kelulusan resmi</li>
-          <li><div class="feat-check">✓</div>Portfolio siap kerja</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 2jt</div>
-            <div class="price-sub">~Rp 83rb/pertemuan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+            // ADVANCED (24-30)
+            { q: "24. Scarcely ___ started the presentation when the power went out.", options: ["I had", "did I", "had I", "I did"], correct: 2, level: "Advanced" },
+            { q: "25. It's high time you ___ finding a job.", options: ["start", "starting", "started", "to start"], correct: 2, level: "Advanced" },
+            { q: "26. ___ the weather be good, we will go for a hike.", options: ["Should", "Were", "Had", "If"], correct: 0, level: "Advanced" },
+            { q: "27. The company is on the ___ of bankruptcy.", options: ["edge", "verge", "border", "margin"], correct: 1, level: "Advanced" },
+            { q: "28. He was accused ___ stealing confidential documents from the office.", options: ["for", "with", "of", "about"], correct: 2, level: "Advanced" },
+            { q: "29. Little ___ that her speech would inspire millions across the globe.", options: ["she knew", "did she know", "she had known", "knew she"], correct: 1, level: "Advanced" },
+            { q: "30. Had I known about the delayed schedule, I ___ the ticket in advance.", options: ["wouldn't buy", "won't have bought", "wouldn't have bought", "hadn't bought"], correct: 2, level: "Advanced" }
+        ];
 
-    <!-- English SD -->
-    <div class="program-card show" data-cat="english">
-      <div class="program-card-top top-blue">🎒</div>
-      <div class="program-card-body">
-        <div class="program-name">ENGLISH COURSE — SD</div>
-        <div class="program-sessions">📅 @60 menit/sesi · Per Bulan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Speaking & Listening dasar</li>
-          <li><div class="feat-check">✓</div>Vocabulary & Grammar dasar</li>
-          <li><div class="feat-check">✓</div>Pronunciation menyenangkan</li>
-          <li><div class="feat-check">✓</div>Metode belajar anak-friendly</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 500rb</div>
-            <div class="price-sub">per bulan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+        // Global App State
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+        let currentStudent = { name: '', phone: '' };
+        let allSubmissions = []; // Store fetched submissions from DB
 
-    <!-- English SMP -->
-    <div class="program-card show" data-cat="english">
-      <div class="program-card-top top-teal">📚</div>
-      <div class="program-card-body">
-        <div class="program-name">ENGLISH COURSE — SMP</div>
-        <div class="program-sessions">📅 @60 menit/sesi · 3 Bulan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Speaking & Listening menengah</li>
-          <li><div class="feat-check">✓</div>Vocabulary & Grammar lanjut</li>
-          <li><div class="feat-check">✓</div>Pronunciation terstruktur</li>
-          <li><div class="feat-check">✓</div>Metode belajar menyenangkan</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 1,5jt</div>
-            <div class="price-sub">per 3 bulan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+        // Admin Security
+        let isAdminLoggedIn = false;
+        const ADMIN_PIN = "2201"; // Ubah PIN sesuai kebutuhan Anda di sini
 
-    <!-- English SMA -->
-    <div class="program-card show" data-cat="english">
-      <div class="program-card-top top-orange">🎓</div>
-      <div class="program-card-body">
-        <div class="program-name">ENGLISH COURSE — SMA</div>
-        <div class="program-sessions">📅 @90 menit/sesi · 3 Bulan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Speaking & Listening intensif</li>
-          <li><div class="feat-check">✓</div>Grammar & Vocabulary lanjutan</li>
-          <li><div class="feat-check">✓</div>Pronunciation profesional</li>
-          <li><div class="feat-check">✓</div>Persiapan TOEFL / kerja</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 2jt</div>
-            <div class="price-sub">per 3 bulan</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+        // Tab Navigation with Protection
+        function switchTab(tab) {
+            if (tab === 'admin' && !isAdminLoggedIn) {
+                openAdminPinModal();
+                return;
+            }
 
-    <!-- English Private -->
-    <div class="program-card show" data-cat="english">
-      <div class="program-card-top top-blue">🌐</div>
-      <div class="program-card-body">
-        <div class="program-name">ENGLISH COURSE — PRIVATE</div>
-        <div class="program-sessions">📅 @90 menit/sesi · 30x Pertemuan</div>
-        <ul class="program-features">
-          <li><div class="feat-check">✓</div>Kelas 1-on-1 eksklusif</li>
-          <li><div class="feat-check">✓</div>Materi disesuaikan kebutuhan</li>
-          <li><div class="feat-check">✓</div>Jadwal Fleksibel</li>
-          <li><div class="feat-check">✓</div>Persiapan TOEFL / kerja</li>
-        </ul>
-        <div class="program-price-row">
-          <div>
-            <div class="price-main">Rp 2,3 jt</div>
-            <div class="price-sub">Paket yang paling banyaj dipilih</div>
-          </div>
-          <a href="#daftar" class="price-btn">DAFTAR</a>
-        </div>
-      </div>
-    </div>
+            const testView = document.getElementById('test-view');
+            const adminView = document.getElementById('admin-view');
+            const testBtn = document.getElementById('nav-test-btn');
+            const adminBtn = document.getElementById('nav-admin-btn');
 
-  </div>
-</section>
+            if (tab === 'test') {
+                testView.classList.remove('hidden');
+                adminView.classList.add('hidden');
+                testBtn.className = "px-4 py-2 rounded-lg bg-white text-blue-700 shadow-sm transition-all flex items-center gap-2";
+                adminBtn.className = "px-4 py-2 rounded-lg text-blue-100 hover:text-white transition-all flex items-center gap-2";
+            } else {
+                testView.classList.add('hidden');
+                adminView.classList.remove('hidden');
+                adminBtn.className = "px-4 py-2 rounded-lg bg-white text-blue-700 shadow-sm transition-all flex items-center gap-2";
+                testBtn.className = "px-4 py-2 rounded-lg text-blue-100 hover:text-white transition-all flex items-center gap-2";
+            }
+        }
 
-<!-- ═ TESTIMONI ═ -->
-<section id="testimoni">
-  <div class="testimoni-header reveal">
-    <div class="section-label">Kata Mereka</div>
-    <h2 class="section-title">ALUMNI KAMI<br>BICARA</h2>
-    <p class="section-sub">Peserta dari berbagai latar belakang telah merasakan manfaat kursus Politek IBC Indramayu</p>
-  </div>
-  <div class="testimoni-grid">
-    <div class="testi-card reveal">
-      <div class="testi-quote">"</div>
-      <div class="testi-text">Alhamdulillah Setelah ikut kursus komputer di Politek IBC, saya langsung diterima kerja di perusahaan di Cikarang. Instrukturnya sabar banget ngajarin dari nol. Recommended!</div>
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-person">
-        <div class="testi-avatar" style="background:linear-gradient(135deg,#1B3A6B,#0A1628)">👨</div>
-        <div>
-          <div class="testi-name">Samsul Huda</div>
-          <div class="testi-role">Alumni Komputer Office · Kini Staff Admin</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-quote">"</div>
-      <div class="testi-text">Kursus English Private di sini beda — instrukturnya sabar, materi disesuaikan kebutuhan saya yang mau kerja di perusahaan asing. Sekarang sudah 3 tahun di Amerika!</div>
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-person">
-        <div class="testi-avatar" style="background:linear-gradient(135deg,#064E3B,#065F46)">👩</div>
-        <div>
-          <div class="testi-name">Sumaerih</div>
-          <div class="testi-role">Alumni English Private · Kini Bekerja di Amerika</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-quote">"</div>
-      <div class="testi-text">Materi Kursusnya berguna banget buat bikin makalah, artikel, dll. Meski udah lulus, mereka tetap sangat membantu kalau kita masih merasa bingung.SUKA ❤️✨.</div>
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-person">
-        <div class="testi-avatar" style="background:linear-gradient(135deg,#7F1D1D,#991B1B)">👩</div>
-        <div>
-          <div class="testi-name">Amelia Kontesa</div>
-          <div class="testi-role">Alumni Komputer Office · Mahasiswi Polindra</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        function openAdminPinModal() {
+            document.getElementById('admin-pin-input').value = '';
+            document.getElementById('pin-error-msg').classList.add('hidden');
+            document.getElementById('admin-pin-modal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('admin-pin-input').focus(), 100);
+        }
 
-<!-- ═ FORM PENDAFTARAN ═ -->
-<section id="daftar">
-  <div class="daftar-inner">
-    <div class="daftar-info reveal">
-      <div class="section-label">Bergabung Sekarang</div>
-      <h2 class="section-title">DAFTAR &<br>MULAI BELAJAR</h2>
-      <p class="section-sub">Isi formulir dan tim kami akan menghubungi kamu dalam 1x24 jam untuk konfirmasi jadwal.</p>
-      <div class="info-items">
-        <div class="info-item">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-card reveal">
-      <form action="https://formspree.io/f/mwvarwkr" method="POST" id="formContent">
-        <div class="form-title">FORMULIR PENDAFTARAN</div>
-        <div class="form-subtitle">Lengkapi data di bawah ini dengan benar</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" name="Nama Lengkap" id="nama" placeholder="Nama kamu" required>
-          </div>
-          <div class="form-group">
-            <label>No. HP / WhatsApp</label>
-            <input type="tel" name="WhatsApp" id="hp" placeholder="08xxxxxxxxxx" required>
-          </div>
-          <div class="form-group">
-            <label>Usia</label>
-            <input type="number" id="usia" placeholder="Usia kamu" min="6" max="99">
-          </div>
-          <div class="form-group">
-            <label>Status Saat Ini</label>
-            <select name="Status" id="status">
-              <option value="">-- Pilih Status --</option>
-              <option>Pelajar SD</option>
-              <option>Pelajar SMP</option>
-              <option>Pelajar SMA</option>
-              <option>Mahasiswa</option>
-              <option>Pencari Kerja</option>
-              <option>Karyawan</option>
-              <option>Ibu Rumah Tangga</option>
-              <option>Lainnya</option>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label>Program yang Diminati</label>
-            <select name="Program Kursus" id="progInput" required>
-              <option value="">-- Pilih Program --</option>
-              <optgroup label="── Kursus Komputer ──">
-                <option>MS. Word (Rp 800rb / 8 pertemuan)</option>
-                <option>MS. PowerPoint (Rp 700rb / 6 pertemuan)</option>
-                <option>MS. Excel (Rp 1.000rb / 9 pertemuan)</option>
-                <option>Komputer Office Lengkap (Rp 2.300rb / 30 pertemuan)</option>
-                <option>Desain Dasar (Rp 2.000rb / 24 pertemuan)</option>
-              </optgroup>
-              <optgroup label="── English Course ──">
-                <option>English Course SD (Rp 450rb/bulan)</option>
-                <option>English Course SMP (Rp 1.500rb/3 bulan)</option>
-                <option>English Course SMA (Rp 2.000rb/3 bulan)</option>
-                <option>English Course Private (Rp 2.300rb/30 pertemuan)</option>
-              </optgroup>
-              <optgroup label="── Lainnya ──">
-                <option>Konsultasi Gratis dulu</option>
-              </optgroup>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label>Pesan / Pertanyaan (Opsional)</label>
-            <textarea name="Pesan dari User" id="pesan" placeholder="Tulis pertanyaan atau pesan kamu di sini..."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="form-submit">KIRIM PENDAFTARAN →</button>
-        <div class="form-note">🔒 Data kamu aman dan tidak akan disalahgunakan</div>
-      </div>
-      <div class="form-success" id="formSuccess">
-        <div class="success-icon">🎉</div>
-        <div class="success-title">PENDAFTARAN TERKIRIM!</div>
-        <div class="success-sub">Terima kasih! Tim Politek IBC akan segera menghubungi kamu.<br><br>
-          Atau langsung hubungi:<br>
-          <strong>082-1140-9313 (Haikal)</strong><br>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<script>
-  const form = document.getElementById("formContent");
-  
-  async function handleSubmit(event) {
-    event.preventDefault(); // Mencegah pindah halaman ke Formspree
-    
-    const status = document.getElementById("formSuccess");
-    const data = new FormData(event.target);
-    
-    // Kirim data ke Formspree di latar belakang
-    fetch(event.target.action, {
-      method: form.method,
-      body: data,
-      headers: {
-          'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        // Jika berhasil, sembunyikan form dan munculkan pesan sukses di web kamu
-        form.style.display = "none";
-        status.style.display = "block";
-      } else {
-        // Jika ada error
-        alert("Oops! Ada masalah saat mengirim pendaftaran. Coba lagi ya.");
-      }
-    }).catch(error => {
-      alert("Oops! Sepertinya ada gangguan koneksi.");
-    });
-  }
-  
-  // Pasang fungsi di atas ke form kamu
-  form.addEventListener("submit", handleSubmit)
-</script>
+        function closeAdminPinModal() {
+            document.getElementById('admin-pin-modal').classList.add('hidden');
+        }
 
-<!-- ═ KONTAK & MAP ═ -->
-<section id="kontak">
-  <div class="kontak-inner">
-    <div class="kontak-info reveal">
-      <div class="section-label">Hubungi Kami</div>
-      <h2 class="section-title">ADA PERTANYAAN?<br><span>KAMI SIAP</span><br>MEMBANTU</h2>
-      <p class="section-sub">Jangan ragu menghubungi kami. Tim Politek IBC siap menjawab semua pertanyaanmu kapanpun.</p>
-      <div class="kontak-cards">
-        <a href="https://wa.me/628211409313" class="kontak-card" target="_blank">
-          <div class="kontak-card-icon">💬</div>
-          <div>
-            <div class="kontak-card-label">WhatsApp · Komputer</div>
-            <div class="kontak-card-val">082-1140-9313 (Haikal)</div>
-          </div>
-        </a>
-        <a href="https://maps.app.goo.gl/LW3A4tS6pzRuAJiq8" class="kontak-card" target="_blank">
-          <div class="kontak-card-icon">📍</div>
-          <div>
-            <div class="kontak-card-label">Alamat</div>
-            <div class="kontak-card-val">Jl. Tentara Pelajar No.03, Jatibarang<br>Kab. Indramayu, Jawa Barat 45273</div>
-          </div>
-        </a>
-        <div class="kontak-card">
-          <div class="kontak-card-icon">🕐</div>
-          <div>
-            <div class="kontak-card-label">Jam Buka</div>
-            <div class="kontak-card-val">Setiap Hari · 08.00 – 17.00 WIB</div>
-          </div>
-        </div>
-      </div>
-    </div>
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const inputPin = document.getElementById('admin-pin-input').value.trim();
+            if (inputPin === ADMIN_PIN) {
+                isAdminLoggedIn = true;
+                closeAdminPinModal();
+                switchTab('admin');
+            } else {
+                document.getElementById('pin-error-msg').classList.remove('hidden');
+                document.getElementById('admin-pin-input').value = '';
+                document.getElementById('admin-pin-input').focus();
+            }
+        }
 
-    <div class="map-container reveal">
-      <div class="map-placeholder">
-        <div class="map-pin">📍</div>
-        <div class="map-text">
-          <strong style="color:white">Politek IBC Indramayu</strong><br>
-          Jl. Tentara Pelajar No.03, Jatibarang<br>
-          Kab. Indramayu, Jawa Barat 45273
-        </div>
-        <a href="https://maps.app.goo.gl/LW3A4tS6pzRuAJiq8" target="_blank" class="map-link">
-          🗺️ Buka di Google Maps
-        </a>
-      </div>
-    </div>
-  </div>
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            switchTab('test');
+        }
 
-  <footer>
-    <div class="footer-left">
-      <img src="politek.png" alt="Logo Politek IBC">
-      <div class="footer-logo-text">POLITEK IBC · INTERNATIONAL BRILLIANT COLLEGE</div>
-    </div>
-    <div class="footer-copy">© 2025 Politek IBC Indramayu · Est. 1985</div>
-  </footer>
-</section>
+        // Handle Form Submission before Test Starts
+        function handleStartTest(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('student-name').value.trim();
+            const phoneInput = document.getElementById('student-phone').value.trim();
 
-<script>
-function filterTab(el, cat) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('.program-card').forEach(card => {
-    card.classList.toggle('show', cat === 'semua' || card.dataset.cat === cat);
-  });
-}
+            if (!nameInput || !phoneInput) return;
 
-function submitForm() {
-  const nama = document.getElementById('nama').value.trim();
-  const hp = document.getElementById('hp').value.trim();
-  const prog = document.getElementById('progInput').value;
-  if (!nama || !hp || !prog) {
-    alert('Mohon lengkapi Nama, No. HP, dan Program yang dipilih.');
-    return;
-  }
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+            currentStudent = { name: nameInput, phone: phoneInput };
+            
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            showQuestion();
+        }
 
-  const isEnglish = prog.toLowerCase().includes('english');
-  const waNum = isEnglish ? '6281120082259' : '628211409313';
-  const msg = `Halo, saya *${nama}* ingin mendaftar program *${prog}* di Politek IBC. No HP saya: ${hp}`;
-  setTimeout(() => {
-    window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`, '_blank');
-  }, 900);
-}
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            
+            // Update Progress
+            const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            document.getElementById('progress-text').innerText = `Soal ${currentQuestion + 1} dari ${questions.length}`;
+            document.getElementById('category-badge').innerText = q.level;
+            
+            // Question text
+            document.getElementById('question-text').innerText = q.q;
+            
+            // Render options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/50 active:bg-blue-100 transition-all font-medium text-slate-700 flex items-center justify-between group";
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-blue-500 flex items-center justify-center text-xs font-bold text-transparent group-hover:text-blue-500">✓</span>
+                `;
+                btn.onclick = () => selectOption(index);
+                optionsContainer.appendChild(btn);
+            });
+        }
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+        function selectOption(index) {
+            const q = questions[currentQuestion];
+            const isCorrect = (index === q.correct);
+            
+            if (isCorrect) score++;
+
+            userAnswers.push({
+                question: q.q,
+                selected: index,
+                correct: q.correct,
+                options: q.options,
+                isCorrect: isCorrect,
+                level: q.level
+            });
+            
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            
+            let level = "";
+            let rec = "";
+
+            if (score <= 8) {
+                level = "BEGINNER";
+                rec = "Anda disarankan bergabung di kelas **Beginner (A1)**. Kelas ini fokus pada pemahaman tata bahasa paling dasar, pembentukan kalimat sederhana, dan kosakata sehari-hari.";
+            } else if (score <= 16) {
+                level = "ELEMENTARY";
+                rec = "Anda direkomendasikan masuk kelas **Elementary (A2)**. Anda sudah memiliki dasar yang baik dan siap memperdalam percakapan tenses umum dan ekspresi harian.";
+            } else if (score <= 24) {
+                level = "INTERMEDIATE";
+                rec = "Anda cocok berada di kelas **Intermediate (B1-B2)**. Kemampuan Anda sudah solid. Fokus utama Anda adalah kelancaran (fluency), variasi idiom, serta tenses kompleks.";
+            } else {
+                level = "ADVANCED";
+                rec = "Luar biasa! Anda siap untuk kelas **Advanced (C1-C2)**. Kelas ini melatih kemampuan bahasa Inggris untuk tingkat akademis, bisnis profesional, dan tata bahasa tingkat tinggi.";
+            }
+
+            document.getElementById('final-level').innerText = level;
+            document.getElementById('score-text').innerText = `${score} / ${questions.length}`;
+            
+            const pct = Math.round((score / questions.length) * 100);
+            document.getElementById('score-percentage').innerText = `${pct}% Jawaban Benar`;
+            document.getElementById('recommendation-text').innerText = rec.replace(/\*\*/g, '');
+
+            buildReviewList();
+
+            // Save submission to DB
+            saveSubmissionToDB({
+                studentName: currentStudent.name,
+                studentPhone: currentStudent.phone,
+                score: score,
+                total: questions.length,
+                percentage: pct,
+                level: level,
+                createdAt: new Date().toISOString()
+            });
+        }
+
+        function buildReviewList() {
+            const container = document.getElementById('review-container');
+            container.innerHTML = '';
+
+            userAnswers.forEach((ans) => {
+                const item = document.createElement('div');
+                item.className = `p-3.5 rounded-xl border ${ans.isCorrect ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'}`;
+                
+                item.innerHTML = `
+                    <div class="flex justify-between items-start gap-2 mb-1">
+                        <span class="font-bold text-xs sm:text-sm text-slate-800">${ans.question}</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded font-bold uppercase ${ans.isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                            ${ans.isCorrect ? 'Benar' : 'Salah'}
+                        </span>
+                    </div>
+                    <div class="text-xs text-slate-600 space-y-0.5">
+                        <p>Jawaban Anda: <span class="font-bold ${ans.isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${ans.options[ans.selected]}</span></p>
+                        ${!ans.isCorrect ? `<p>Kunci Jawaban: <span class="font-bold text-emerald-700">${ans.options[ans.correct]}</span></p>` : ''}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function toggleReview() {
+            const reviewSec = document.getElementById('review-section');
+            reviewSec.classList.toggle('hidden');
+        }
+
+        function resetTest() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+            document.getElementById('student-form').reset();
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+
+        // Export data to CSV
+        function exportToCSV() {
+            if (!allSubmissions || allSubmissions.length === 0) {
+                alert("Belum ada data peserta untuk diexport!");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,Tanggal,Nama,WhatsApp,Skor,Total,Persentase,Level\n";
+            allSubmissions.forEach(sub => {
+                const date = new Date(sub.createdAt).toLocaleDateString('id-ID');
+                csvContent += `"${date}","${sub.studentName}","${sub.studentPhone}",${sub.score},${sub.total},${sub.percentage}%,"${sub.level}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `placement_test_results_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase state
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'english-placement-app';
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+
+        // Standard Firestore Path: /artifacts/{appId}/public/data/{collectionName}
+        function getSubmissionsRef() {
+            return collection(db, 'artifacts', appId, 'public', 'data', 'submissions');
+        }
+
+        async function initFirebase() {
+            try {
+                if (typeof __firebase_config !== 'undefined') {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    db = getFirestore(app);
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    currentUser = auth.currentUser;
+                    
+                    // Listen to submissions in realtime
+                    listenToSubmissions();
+                } else {
+                    console.warn("Firebase config is not present. Using mock fallback mode.");
+                    renderMockAdminData();
+                }
+            } catch (err) {
+                console.error("Firebase Auth/Init Error:", err);
+            }
+        }
+
+        // Save submission to database
+        window.saveSubmissionToDB = async function(data) {
+            const statusEl = document.getElementById('sync-status');
+            try {
+                if (db && currentUser) {
+                    await addDoc(getSubmissionsRef(), data);
+                    statusEl.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> Data tersimpan otomatis`;
+                    statusEl.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-2";
+                } else {
+                    // Fallback local memory save for preview
+                    data.id = 'temp_' + Date.now();
+                    allSubmissions.unshift(data);
+                    renderAdminDashboard(allSubmissions);
+                    statusEl.innerHTML = `<i class="fa-solid fa-check"></i> Tersimpan (Sesi Lokal)`;
+                }
+            } catch (err) {
+                console.error("Error saving data:", err);
+                statusEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Gagal simpan ke DB`;
+                statusEl.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold mb-2";
+            }
+        };
+
+        // Realtime listener for Admin Dashboard
+        function listenToSubmissions() {
+            if (!db || !currentUser) return;
+
+            onSnapshot(getSubmissionsRef(), (snapshot) => {
+                const docs = [];
+                snapshot.forEach(docSnap => {
+                    docs.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                
+                // Sort by date descending in memory
+                docs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                
+                allSubmissions = docs;
+                renderAdminDashboard(allSubmissions);
+            }, (error) => {
+                console.error("Firestore Listen Error:", error);
+            });
+        }
+
+        // Render Admin Stats and Table
+        window.renderAdminDashboard = function(data) {
+            const tbody = document.getElementById('admin-table-body');
+            const totalEl = document.getElementById('stat-total');
+            const avgEl = document.getElementById('stat-avg');
+            const topLevelEl = document.getElementById('stat-top-level');
+
+            if (!data || data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400">Belum ada peserta yang menyelesaikan tes.</td></tr>`;
+                totalEl.innerText = "0";
+                avgEl.innerText = "0";
+                topLevelEl.innerText = "-";
+                return;
+            }
+
+            // Stats Calculations
+            totalEl.innerText = data.length;
+            const totalScore = data.reduce((acc, curr) => acc + (curr.score || 0), 0);
+            avgEl.innerText = (totalScore / data.length).toFixed(1) + ' / 30';
+
+            const levelCounts = {};
+            data.forEach(d => {
+                levelCounts[d.level] = (levelCounts[d.level] || 0) + 1;
+            });
+            const topLevel = Object.keys(levelCounts).reduce((a, b) => levelCounts[a] > levelCounts[b] ? a : b, '-');
+            topLevelEl.innerText = topLevel;
+
+            // Filter handling
+            filterAdminTable();
+        };
+
+        window.filterAdminTable = function() {
+            const tbody = document.getElementById('admin-table-body');
+            const search = document.getElementById('search-input').value.toLowerCase();
+            const levelFilter = document.getElementById('level-filter').value;
+
+            const filtered = allSubmissions.filter(sub => {
+                const matchSearch = (sub.studentName || '').toLowerCase().includes(search) || (sub.studentPhone || '').includes(search);
+                const matchLevel = levelFilter === 'ALL' || sub.level === levelFilter;
+                return matchSearch && matchLevel;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400">Data tidak ditemukan.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = '';
+            filtered.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+                
+                const formattedDate = item.createdAt ? new Date(item.createdAt).toLocaleDateString('id-ID', {
+                    day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+                }) : '-';
+
+                // Format phone for WhatsApp direct link (convert 08xx to 628xx)
+                let cleanPhone = (item.studentPhone || '').replace(/[^0-9]/g, '');
+                if (cleanPhone.startsWith('0')) {
+                    cleanPhone = '62' + cleanPhone.slice(1);
+                }
+                const waMessage = encodeURIComponent(`Halo ${item.studentName}, kami dari tim kursus Bahasa Inggris. Selamat! Anda telah menyelesaikan Placement Test dengan hasil level ${item.level} (Skor ${item.score}/30).`);
+                const waUrl = `https://wa.me/${cleanPhone}?text=${waMessage}`;
+
+                // Level Badge Color
+                let badgeClass = "bg-slate-100 text-slate-700";
+                if (item.level === 'BEGINNER') badgeClass = "bg-amber-100 text-amber-800";
+                if (item.level === 'ELEMENTARY') badgeClass = "bg-blue-100 text-blue-800";
+                if (item.level === 'INTERMEDIATE') badgeClass = "bg-indigo-100 text-indigo-800";
+                if (item.level === 'ADVANCED') badgeClass = "bg-emerald-100 text-emerald-800";
+
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 text-slate-500 whitespace-nowrap text-xs">${formattedDate}</td>
+                    <td class="py-3.5 px-4 font-bold text-slate-800">${item.studentName || '-'}</td>
+                    <td class="py-3.5 px-4 whitespace-nowrap">
+                        <a href="${waUrl}" target="_blank" class="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 font-semibold hover:underline">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> ${item.studentPhone || '-'}
+                        </a>
+                    </td>
+                    <td class="py-3.5 px-4 font-bold">${item.score} / ${item.total} <span class="text-xs text-slate-400 font-normal">(${item.percentage}%)</span></td>
+                    <td class="py-3.5 px-4">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider ${badgeClass}">
+                            ${item.level}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <button onclick="deleteEntry('${item.id}')" class="text-rose-500 hover:text-rose-700 p-1.5 rounded-lg hover:bg-rose-50 transition" title="Hapus Data">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+
+        window.deleteEntry = async function(id) {
+            if (!id) return;
+            if (confirm("Apakah Anda yakin ingin menghapus data peserta ini?")) {
+                try {
+                    if (db && currentUser && !id.startsWith('temp_')) {
+                        await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'submissions', id));
+                    } else {
+                        allSubmissions = allSubmissions.filter(s => s.id !== id);
+                        renderAdminDashboard(allSubmissions);
+                    }
+                } catch (err) {
+                    console.error("Gagal menghapus:", err);
+                }
+            }
+        };
+
+        function renderMockAdminData() {
+            allSubmissions = [
+                { id: 'temp_1', studentName: 'Budi Santoso', studentPhone: '081234567890', score: 21, total: 30, percentage: 70, level: 'INTERMEDIATE', createdAt: new Date().toISOString() },
+                { id: 'temp_2', studentName: 'Siti Rahma', studentPhone: '085712345678', score: 27, total: 30, percentage: 90, level: 'ADVANCED', createdAt: new Date(Date.now() - 3600000).toISOString() },
+                { id: 'temp_3', studentName: 'Andi Wijaya', studentPhone: '082198765432', score: 7, total: 30, percentage: 23, level: 'BEGINNER', createdAt: new Date(Date.now() - 7200000).toISOString() }
+            ];
+            renderAdminDashboard(allSubmissions);
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initFirebase();
+        });
+    </script>
 </body>
 </html>
