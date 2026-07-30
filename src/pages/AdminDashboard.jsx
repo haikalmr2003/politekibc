@@ -9,7 +9,7 @@ const createClient = (url, key) => ({
   })
 });
 
-const supabase = createClient("YOUR_SUPABASE_URL", "YOUR_SUPABASE_ANON_KEY");
+const supabase = createClient("NEXT_PUBLIC_SUPABASE_URL=https://iamawjbpzwetbljfrzal.supabase.co", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_EW3cchT7ZAazEK5rDAB_gA_7nBl9P3N");
 
 function StatCard({ title, value, icon }) {
   return (
