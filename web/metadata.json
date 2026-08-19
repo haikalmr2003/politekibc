@@ -1,0 +1,6 @@
+{
+  "name": "Politek IBC - Lembaga Kursus Bahasa Inggris",
+  "description": "Website Resmi Politek IBC dengan Landing Page Premium, Placement Test Online, Student Portal, Admin Dashboard, dan Integrasi Database Supabase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
